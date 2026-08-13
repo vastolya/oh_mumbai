@@ -8,5 +8,10 @@
   --color-terracotta: #B25B37;
   --color-terracotta-hover: #9C4B2C;
   --colot-espresso: #4D362E;
-  
+  --color-seashell: #FAF6F1;
+}
+
+html,
+body {
+  background: var(--color-chocolate);
 }

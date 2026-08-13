@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
+
 type H3TitleProps = {
   children: React.ReactNode;
   delay?: number;
@@ -12,11 +15,14 @@ type H3TitleProps = {
 const H3Title = ({
   children,
   delay = 0,
-  className = "",
+  className,
   animate: animateProp,
   disableAnimation = false,
 }: H3TitleProps) => {
-  const titleClassName = `text-xl leading-[118%] font-bold tracking-normal md:text-2xl md:leading-[116%] md:font-extrabold md:tracking-normal ${className}`;
+  const titleClassName = cn(
+    "text-xl leading-[118%] font-bold tracking-normal md:text-2xl md:leading-[116%] md:font-extrabold md:tracking-normal",
+    className,
+  );
 
   if (disableAnimation) {
     return <h3 className={titleClassName}>{children}</h3>;

@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 
+import { cn } from '@/lib/utils'
+
 type H1TitleProps = {
   children: React.ReactNode
   delay?: number
@@ -13,11 +15,14 @@ type H1TitleProps = {
 const H1Title = ({
   children,
   delay = 0,
-  className = '',
+  className,
   animate: animateProp,
   disableAnimation = false,
 }: H1TitleProps) => {
-  const titleClassName = `font-gertika text-[72px] font-bold leading-[105%] tracking-[-0.01em] text-center ${className}`
+  const titleClassName = cn(
+    'font-gertika text-center text-[72px] leading-[105%] font-bold tracking-[-0.01em]',
+    className,
+  )
 
   if (disableAnimation) {
     return <h1 className={titleClassName}>{children}</h1>

@@ -2,25 +2,29 @@
 
 import { useId, useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 type ButtonProps = {
   variant?: "primary" | "secondary";
   children: React.ReactNode;
+  className?: string;
   onClick?: () => void;
 };
 
 const variants = {
   primary: "bg-terracotta text-white",
-  secondary: "bg-white text-espresso",
+  secondary: "bg-white text-espresso ",
 };
 
 const fillColors = {
   primary: "var(--color-terracotta-hover)",
-  secondary: "var(--color-chocolate)",
+  secondary: "var(--color-seashell)",
 };
 
 export default function Button({
   variant = "primary",
   children,
+  className,
   onClick,
 }: ButtonProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -51,7 +55,11 @@ export default function Button({
       onClick={onClick}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`font-geometria relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-sm px-6 py-3 text-base leading-[148%] font-normal tracking-normal ${variants[variant]}`}
+      className={cn(
+        "font-geometria relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-sm px-6 py-3 text-base leading-[148%] font-normal tracking-normal",
+        variants[variant],
+        className,
+      )}
     >
       {/* SVG-фильтр: деформирует край круга, имитируя волну */}
       <svg className="absolute size-0" aria-hidden focusable="false">
@@ -96,7 +104,7 @@ export default function Button({
         }}
       />
       <span
-        className={`relative z-10 ${variant === "secondary" && blob.size > 0 ? "text-white" : ""}`}
+        className={`relative z-10 ${variant === "secondary" && blob.size > 0 ? "text-terracotta-hover transition-all duration-300" : ""}`}
       >
         {children}
       </span>

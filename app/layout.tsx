@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   description: "Ресторан индийской кухни",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru">
       <body>
