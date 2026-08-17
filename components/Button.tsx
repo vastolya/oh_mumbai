@@ -13,7 +13,7 @@ type ButtonProps = {
 
 const variants = {
   primary: "bg-terracotta text-white",
-  secondary: "bg-white text-espresso ",
+  secondary: "!text-chocolate bg-white text-espresso ",
 };
 
 const fillColors = {
@@ -56,7 +56,7 @@ export default function Button({
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       className={cn(
-        "font-geometria relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-sm px-6 py-3 text-base leading-[148%] font-normal tracking-normal",
+        "font-geometria relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-sm px-6 py-3 text-base leading-[148%] font-normal tracking-normal text-black",
         variants[variant],
         className,
       )}

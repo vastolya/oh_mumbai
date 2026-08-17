@@ -1,0 +1,50 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
+
+type ParagraphProps = {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+  animate?: import("framer-motion").TargetAndTransition;
+  disableAnimation?: boolean;
+};
+
+const Paragraph = ({
+  children,
+  delay = 0,
+  className,
+  animate: animateProp,
+  disableAnimation = false,
+}: ParagraphProps) => {
+  const paragraphClassName = cn(
+    "font-geometria text-base leading-[150%] font-normal tracking-normal",
+    className,
+  );
+
+  if (disableAnimation) {
+    return <p className={paragraphClassName}>{children}</p>;
+  }
+
+  return (
+    <motion.p
+      initial={{ x: 40, opacity: 0 }}
+      {...(animateProp
+        ? { animate: animateProp }
+        : { whileInView: { x: 0, opacity: 1 }, viewport: { once: true } })}
+      transition={{
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        delay,
+      }}
+      className={paragraphClassName}
+    >
+      {children}
+    </motion.p>
+  );
+};
+
+export default Paragraph;

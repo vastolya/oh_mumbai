@@ -3,12 +3,13 @@
 }
 
 @theme {
-  --color-chocolate: #4D362E;
-  --color-biege: #EDE2D1;
-  --color-terracotta: #B25B37;
-  --color-terracotta-hover: #9C4B2C;
-  --colot-espresso: #4D362E;
-  --color-seashell: #FAF6F1;
+  --color-chocolate: #4d362e;
+  --color-biege: #ede2d1;
+  --color-terracotta: #b25b37;
+  --color-terracotta-hover: #9c4b2c;
+  --colot-espresso: #4d362e;
+  --color-seashell: #faf6f1;
+  --color-gray: #9b9894;
 }
 
 html,
