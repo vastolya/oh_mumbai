@@ -8,6 +8,7 @@ import TerracottaPattern from "@/components/TerracottaPattern";
 import H2Title from "@/components/H2Title";
 import NavLink from "@/components/NavLink";
 import Paragraph from "@/components/Paragraph";
+import MenuCard from "@/components/MenuCard";
 
 export default function Home() {
   return (
@@ -95,6 +96,19 @@ export default function Home() {
             и теперь отвечает за достоверность вкусов Oh!Mumbai
           </Paragraph>
         </div>
+      </section>
+
+      <section className="mx-auto grid max-w-480 grid-cols-12 gap-6 px-60 pb-30">
+        <div className="col-span-12 flex justify-between pb-12">
+          <H2Title>Меню</H2Title>
+          <NavLink href="/menu" arrow>
+            Перейти в раздел
+          </NavLink>
+        </div>
+        <MenuCard name="Тандури чикен" spicy className="col-span-3" />
+        <MenuCard name="Курма" nut delay={0.1} className="col-span-3" />
+        <MenuCard name="Дал тадка" delay={0.2} className="col-span-3" />
+        <MenuCard name="Панир тикка" spicy delay={0.3} className="col-span-3" />
       </section>
     </main>
   );
