@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
-/* Geometria */
 @font-face {
   font-family: "Geometria";
   src: url("/fonts/GEOMETRIA/geometria-thin.ttf");
@@ -99,7 +98,6 @@
   font-style: italic;
 }
 
-/* TT Gertika */
 @font-face {
   font-family: "TT Gertika";
   src: url("/fonts/TT_GERTIKA/TT_Gertika_Trial_Regular.ttf");
@@ -128,5 +126,16 @@
   body {
     font-family: "Geometria", sans-serif;
     color: #fff;
+  }
+
+  html,
+  body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* старая Edge / IE */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
   }
 }

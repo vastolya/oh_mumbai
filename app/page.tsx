@@ -1,3 +1,4 @@
+import BookingButton from "@/components/booking/BookingButton";
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/Button";
 import H1Title from "@/components/typography/H1Title";
@@ -37,7 +38,7 @@ export default function Home() {
               Oh!Mumbai <br /> ресторан индийской кухни  {" "}
             </H1Title>
             <div className="flex justify-center gap-2">
-              <Button className="w-55">Забронировать</Button>
+              <BookingButton className="w-55">Забронировать</BookingButton>
               <Button className="w-55" variant="secondary">
                 Меню
               </Button>

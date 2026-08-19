@@ -1,4 +1,4 @@
-import Button from "@/components/ui/Button";
+import BookingButton from "@/components/booking/BookingButton";
 import Logo from "@/components/icons/Logo";
 import NavLink from "@/components/ui/NavLink";
 import Section from "@/components/layout/Section";
@@ -23,7 +23,7 @@ export default function Header() {
       <Link href="/">
         <Logo className="text-biege w-38" />
       </Link>
-      <Button>Забронировать +7 (812) 314-03-40</Button>
+      <BookingButton>Забронировать +7 (812) 314-03-40</BookingButton>
     </Section>
   );
 }

@@ -4,7 +4,7 @@ import H3Title from "@/components/typography/H3Title";
 import H2Title from "@/components/typography/H2Title";
 import map from "@/public/map.jpg";
 import Paragraph from "@/components/typography/Paragraph";
-import Button from "@/components/ui/Button";
+import BookingButton from "@/components/booking/BookingButton";
 import NavLink from "@/components/ui/NavLink";
 import Logo from "@/components/icons/Logo";
 import Link from "next/link";
@@ -59,7 +59,7 @@ export default function Footer() {
               info@ohmumbai.ru
             </a>
           </H3Title>
-          <Button className="w-fit">Забронировать стол</Button>
+          <BookingButton className="w-fit">Забронировать стол</BookingButton>
         </div>
 
         <div className="border-biege col-span-12 flex items-center justify-between border-b-2 pt-20 pb-8">
