@@ -70,7 +70,7 @@ export default function Footer() {
             <NavLink href="/about" className="px-1 py-2 whitespace-nowrap">
               О нас
             </NavLink>
-            <NavLink href="/comntacts" className="px-1 py-2">
+            <NavLink href="/contacts" className="px-1 py-2">
               Контакты
             </NavLink>
           </div>
