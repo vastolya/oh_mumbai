@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 
-import NavLink from "@/components/NavLink";
-
 import { cn } from "@/lib/utils";
 
 type H2TitleProps = {

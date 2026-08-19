@@ -1,14 +1,15 @@
-import Button from "@/components/Button";
-import H1Title from "@/components/H1Title";
-import H3Title from "@/components/H3Title";
+import Section from "@/components/layout/Section";
+import Button from "@/components/ui/Button";
+import H1Title from "@/components/typography/H1Title";
+import H3Title from "@/components/typography/H3Title";
 import Image from "next/image";
 
 import hero from "@/public/hero.jpg";
-import TerracottaPattern from "@/components/TerracottaPattern";
-import H2Title from "@/components/H2Title";
-import NavLink from "@/components/NavLink";
-import Paragraph from "@/components/Paragraph";
-import MenuCard from "@/components/MenuCard";
+import TerracottaPattern from "@/components/ui/TerracottaPattern";
+import H2Title from "@/components/typography/H2Title";
+import NavLink from "@/components/ui/NavLink";
+import Paragraph from "@/components/typography/Paragraph";
+import MenuCard from "@/components/menu/MenuCard";
 
 export default function Home() {
   return (
@@ -25,8 +26,12 @@ export default function Home() {
           fetchPriority="high"
           className="object-cover"
         />
-        <section className="mx-auto flex items-center justify-center">
-          <div className="z-10 flex flex-col text-center">
+        <Section
+          as="div"
+          grid={false}
+          className="z-10 flex items-center justify-center"
+        >
+          <div className="flex flex-col text-center">
             <H3Title className="pb-4 text-white">Санкт-Петербург</H3Title>
             <H1Title className="pb-12 text-white">
               Oh!Mumbai <br /> ресторан индийской кухни  {" "}
@@ -38,14 +43,14 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </section>
+        </Section>
       </section>
 
       <section className="relative my-4 py-24">
         <TerracottaPattern className="text-seashell/20" />
       </section>
 
-      <section className="mx-auto grid max-w-480 grid-cols-12 gap-6 px-60 pt-12 pb-30">
+      <Section className="pt-12 pb-30">
         <div className="col-span-6 flex flex-col justify-between">
           <H2Title>
             Воплощение индийского <br /> гостеприимства <br /> и семейных
@@ -96,9 +101,9 @@ export default function Home() {
             и теперь отвечает за достоверность вкусов Oh!Mumbai
           </Paragraph>
         </div>
-      </section>
+      </Section>
 
-      <section className="mx-auto grid max-w-480 grid-cols-12 gap-6 px-60 pb-30">
+      <Section className="pb-30">
         <div className="col-span-12 flex justify-between pb-12">
           <H2Title>Меню</H2Title>
           <NavLink href="/menu" arrow>
@@ -109,7 +114,7 @@ export default function Home() {
         <MenuCard name="Курма" nut delay={0.1} className="col-span-3" />
         <MenuCard name="Дал тадка" delay={0.2} className="col-span-3" />
         <MenuCard name="Панир тикка" spicy delay={0.3} className="col-span-3" />
-      </section>
+      </Section>
     </main>
   );
 }

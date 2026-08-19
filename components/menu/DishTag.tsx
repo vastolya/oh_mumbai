@@ -1,5 +1,5 @@
-import Acorn from "@/components/Acorn";
-import Pepper from "@/components/Pepper";
+import Acorn from "@/components/icons/Acorn";
+import Pepper from "@/components/icons/Pepper";
 import { cn } from "@/lib/utils";
 
 /**

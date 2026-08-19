@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 
-import DishTag from "@/components/DishTag";
-import Paragraph from "@/components/Paragraph";
+import DishTag from "@/components/menu/DishTag";
+import Paragraph from "@/components/typography/Paragraph";
 import { cn } from "@/lib/utils";
 
 type MenuCardBaseProps = {

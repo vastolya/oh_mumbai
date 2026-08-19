@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Arrow from "@/components/Arrow";
-import Chevron from "@/components/Chevron";
+import Arrow from "@/components/icons/Arrow";
+import Chevron from "@/components/icons/Chevron";
 import { cn } from "@/lib/utils";
 
 type NavLinkProps = {
