@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 import { cn } from "@/lib/utils";
 
 type MaxProps = {
@@ -7,6 +11,8 @@ type MaxProps = {
   fill?: string;
   hoverFill?: string;
   className?: string;
+  delay?: number;
+  animate?: import("framer-motion").TargetAndTransition;
 };
 
 export default function Max({
@@ -16,9 +22,11 @@ export default function Max({
   fill = "#ffffff",
   hoverFill = "#4783FD",
   className,
+  delay = 0,
+  animate: animateProp,
 }: MaxProps) {
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
@@ -26,6 +34,11 @@ export default function Max({
       style={
         { "--icon": fill, "--icon-hover": hoverFill } as React.CSSProperties
       }
+      initial={{ opacity: 0, scale: 0.8 }}
+      {...(animateProp
+        ? { animate: animateProp }
+        : { whileInView: { opacity: 1, scale: 1 }, viewport: { once: true } })}
+      transition={{ type: "spring", stiffness: 80, damping: 15, delay }}
       className={cn("group inline-flex shrink-0", className)}
     >
       <svg
@@ -44,6 +57,6 @@ export default function Max({
           className="fill-(--icon) transition-[fill] duration-300 ease-out group-hover:fill-(--icon-hover)"
         />
       </svg>
-    </a>
+    </motion.a>
   );
 }

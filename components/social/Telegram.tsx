@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 import { cn } from "@/lib/utils";
 
 type TelegramProps = {
@@ -11,6 +15,8 @@ type TelegramProps = {
   accentFill?: string;
   accentHoverFill?: string;
   className?: string;
+  delay?: number;
+  animate?: import("framer-motion").TargetAndTransition;
 };
 
 const transition = "transition-[fill] duration-300 ease-out";
@@ -24,9 +30,11 @@ export default function Telegram({
   accentFill = "var(--color-green)",
   accentHoverFill = "#ffffff",
   className,
+  delay = 0,
+  animate: animateProp,
 }: TelegramProps) {
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
@@ -39,6 +47,11 @@ export default function Telegram({
           "--icon-accent-hover": accentHoverFill,
         } as React.CSSProperties
       }
+      initial={{ opacity: 0, scale: 0.8 }}
+      {...(animateProp
+        ? { animate: animateProp }
+        : { whileInView: { opacity: 1, scale: 1 }, viewport: { once: true } })}
+      transition={{ type: "spring", stiffness: 80, damping: 15, delay }}
       className={cn("group inline-flex shrink-0", className)}
     >
       <svg
@@ -67,6 +80,6 @@ export default function Telegram({
           )}
         />
       </svg>
-    </a>
+    </motion.a>
   );
 }

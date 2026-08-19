@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <main>
       <section className="relative flex h-245 w-full">
-        {/* LCP-элемент: грузим сразу, без ленивой загрузки */}
         <Image
           src={hero}
           alt="Ресторан OH!MUMBAI"
