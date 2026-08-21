@@ -45,6 +45,7 @@ export default function Header() {
             open={menuOpen}
             onEnter={handleEnter}
             onLeave={handleLeave}
+            onClose={() => setMenuOpen(false)}
           />
           <NavLink href="/interior">Интерьер</NavLink>
           <NavLink href="/about">О нас</NavLink>

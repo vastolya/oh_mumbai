@@ -19,9 +19,10 @@ type Props = {
   open: boolean;
   onEnter: () => void;
   onLeave: () => void;
+  onClose: () => void;
 };
 
-export default function MenuNavItem({ open, onEnter, onLeave }: Props) {
+export default function MenuNavItem({ open, onEnter, onLeave, onClose }: Props) {
   return (
     <>
       <span
@@ -61,6 +62,7 @@ export default function MenuNavItem({ open, onEnter, onLeave }: Props) {
           <Section as="div" className="py-10">
             <Link
               href="/menu"
+              onClick={onClose}
               className="group/card col-span-3 flex flex-col gap-2"
             >
               <div className="overflow-hidden rounded-xs">
@@ -72,11 +74,14 @@ export default function MenuNavItem({ open, onEnter, onLeave }: Props) {
                   className="h-96 w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
                 />
               </div>
-              <NavLink as="span">Основное меню</NavLink>
+              <NavLink as="span" href="/menu">
+                Основное меню
+              </NavLink>
             </Link>
 
             <Link
-              href="/menu/bar"
+              href="/menu?tab=bar"
+              onClick={onClose}
               className="group/card col-span-3 flex flex-col gap-2"
             >
               <div className="overflow-hidden rounded-xs">
@@ -88,7 +93,7 @@ export default function MenuNavItem({ open, onEnter, onLeave }: Props) {
                   className="h-96 w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
                 />
               </div>
-              <NavLink as="span">Барная карта</NavLink>
+              <NavLink as="span" href="/menu?tab=bar">Барная карта</NavLink>
             </Link>
 
             <div className="col-span-3 col-start-10 flex flex-col justify-center px-22 text-left">
