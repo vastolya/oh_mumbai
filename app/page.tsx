@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import H1Title from "@/components/typography/H1Title";
 import H3Title from "@/components/typography/H3Title";
 import Image from "next/image";
+import Link from "next/link";
 
 import hero from "@/public/hero.jpg";
 import TerracottaPattern from "@/components/ui/TerracottaPattern";
@@ -38,9 +39,11 @@ export default function Home() {
             </H1Title>
             <div className="flex justify-center gap-2">
               <BookingButton className="w-55">Забронировать</BookingButton>
-              <Button className="w-55" variant="secondary">
-                Меню
-              </Button>
+              <Link href="/menu">
+                <Button className="w-55" variant="secondary">
+                  Меню
+                </Button>
+              </Link>
             </div>
           </div>
         </Section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import BookingButton from "@/components/booking/BookingButton";
@@ -12,7 +12,31 @@ import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastY = useRef(0);
+  const divRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = divRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--header-h", `${el.offsetHeight}px`);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastY.current + 8) setHidden(true);
+      else if (y < lastY.current - 8) setHidden(false);
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleEnter = () => {
     if (timer.current) clearTimeout(timer.current);
@@ -25,9 +49,10 @@ export default function Header() {
 
   return (
     <div
+      ref={divRef}
       className={cn(
-        "relative transition-colors duration-400 ease-in-out",
-        menuOpen && "bg-white",
+        "fixed top-0 right-0 left-0 z-40 bg-chocolate transition-transform duration-300 ease-in-out",
+        hidden && "-translate-y-full",
       )}
     >
       <Section
@@ -37,8 +62,7 @@ export default function Header() {
       >
         <div
           className={cn(
-            "flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal transition-colors duration-300 ease-in-out",
-            menuOpen ? "text-chocolate" : "text-white",
+            "flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal text-white",
           )}
         >
           <MenuNavItem
@@ -54,10 +78,7 @@ export default function Header() {
 
         <Link href="/">
           <Logo
-            className={cn(
-              "w-38 transition-colors duration-300 ease-in-out",
-              menuOpen ? "text-chocolate" : "text-biege",
-            )}
+            className="w-38 text-biege"
           />
         </Link>
         <BookingButton>Забронировать +7 (812) 314-03-40</BookingButton>

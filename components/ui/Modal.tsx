@@ -105,7 +105,7 @@ export default function Modal({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
           onClick={onClose}
-          className="bg-chocolate/70 fixed inset-0 z-50 flex items-center justify-center p-6 backdrop-blur-xs"
+          className="bg-chocolate/70 fixed inset-0 z-60 flex items-center justify-center p-6 backdrop-blur-xs"
         >
           <motion.div
             ref={cardRef}
