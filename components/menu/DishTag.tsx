@@ -34,7 +34,7 @@ export default function DishTag({ tag, expanded, className }: DishTagProps) {
   return (
     <span
       className={cn(
-        "text-biege inline-flex h-12 items-center rounded-full",
+        "group/tag text-biege inline-flex h-12 items-center rounded-full",
         tone,
         className,
       )}
@@ -49,7 +49,7 @@ export default function DishTag({ tag, expanded, className }: DishTagProps) {
           "grid grid-cols-[0fr] motion-safe:transition-[grid-template-columns] motion-safe:duration-500 motion-safe:ease-out",
           expanded
             ? "grid-cols-[1fr]"
-            : "group-focus-within:grid-cols-[1fr] group-hover:grid-cols-[1fr]",
+            : "group-hover/tag:grid-cols-[1fr]",
         )}
       >
         <span className="overflow-hidden">

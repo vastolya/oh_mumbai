@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { type StaticImageData } from "next/image";
 
 import DishTag from "@/components/menu/DishTag";
@@ -10,6 +12,7 @@ type MenuCardBaseProps = {
   /** Задержка появления подписи — для каскада в ряду карточек. */
   delay?: number;
   className?: string;
+  onClick?: () => void;
 };
 
 /**
@@ -27,11 +30,22 @@ export default function MenuCard({
   nut,
   delay,
   className,
+  onClick,
 }: MenuCardProps) {
   const tag = spicy ? "spicy" : nut ? "nut" : undefined;
 
   return (
-    <article className={cn("group flex flex-col gap-2", className)}>
+    <article
+      className={cn("group flex flex-col gap-2", onClick && "cursor-pointer", className)}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } }
+          : undefined
+      }
+    >
       <div className="bg-gray relative h-92 overflow-hidden rounded-xs">
         {image && (
           /* Название блюда стоит рядом текстом — alt не дублируем */

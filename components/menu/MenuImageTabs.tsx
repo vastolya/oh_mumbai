@@ -6,8 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Grid from "@/components/icons/Grid";
 import DishPhotoCard from "@/components/menu/DishPhotoCard";
+import DishModal from "@/components/menu/DishModal";
 import NavLink from "@/components/ui/NavLink";
-import { cn } from "@/lib/utils";
 import Paragraph from "../typography/Paragraph";
 
 const TABS = [
@@ -75,11 +75,13 @@ export default function MenuImageTabs() {
   const [prevTabFromUrl, setPrevTabFromUrl] = useState(tabFromUrl);
   const [viewMode, setViewMode] = useState<"image" | "grid">("image");
   const [visibleCount, setVisibleCount] = useState(8);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   if (tabFromUrl !== prevTabFromUrl) {
     setPrevTabFromUrl(tabFromUrl);
     setManualTab(null);
     setVisibleCount(8);
+    setSelectedIndex(null);
   }
 
   const active = manualTab ?? tabFromUrl;
@@ -91,7 +93,7 @@ export default function MenuImageTabs() {
         {TABS.map((tab, i) => (
           <button
             key={tab.label}
-            onClick={() => { setManualTab(i); setVisibleCount(8); }}
+            onClick={() => { setManualTab(i); setVisibleCount(8); setSelectedIndex(null); }}
             className="font-geometria relative cursor-pointer rounded-[3rem] px-4 py-2 text-base leading-[150%] font-normal"
           >
             {i === active && (
@@ -113,12 +115,7 @@ export default function MenuImageTabs() {
 
         <button
           onClick={() => setViewMode((v) => (v === "image" ? "grid" : "image"))}
-          className={cn(
-            "absolute right-0 flex cursor-pointer items-center py-2 transition-colors duration-200",
-            viewMode === "grid"
-              ? "text-green"
-              : "text-gray hover:text-chocolate",
-          )}
+          className="absolute right-0 flex cursor-pointer items-center py-2 text-gray transition-colors duration-200 hover:text-chocolate"
         >
           <Paragraph className="text-sm">
             {viewMode === "image" ? "Фото" : "PDF"}
@@ -177,6 +174,7 @@ export default function MenuImageTabs() {
                 spicy={card.spicy}
                 nut={card.nut}
                 veg={card.veg}
+                onClick={() => setSelectedIndex(i)}
               />
             ))}
           </motion.div>
@@ -192,6 +190,34 @@ export default function MenuImageTabs() {
           </button>
         </div>
       )}
+
+      <DishModal
+        open={selectedIndex !== null}
+        dish={
+          selectedIndex !== null
+            ? {
+                src: filteredCards[selectedIndex].src,
+                name: filteredCards[selectedIndex].alt,
+                description: filteredCards[selectedIndex].description,
+                price: filteredCards[selectedIndex].price,
+                weight: filteredCards[selectedIndex].weight,
+                spicy: filteredCards[selectedIndex].spicy,
+                nut: filteredCards[selectedIndex].nut,
+                veg: filteredCards[selectedIndex].veg,
+              }
+            : null
+        }
+        dishIndex={selectedIndex ?? 0}
+        onClose={() => setSelectedIndex(null)}
+        onPrev={() => setSelectedIndex((i) => (i !== null && i > 0 ? i - 1 : i))}
+        onNext={() =>
+          setSelectedIndex((i) =>
+            i !== null && i < filteredCards.length - 1 ? i + 1 : i,
+          )
+        }
+        hasPrev={(selectedIndex ?? 0) > 0}
+        hasNext={(selectedIndex ?? 0) < filteredCards.length - 1}
+      />
     </div>
   );
 }

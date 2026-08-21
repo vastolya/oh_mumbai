@@ -10,7 +10,7 @@ import TerracottaPattern from "@/components/ui/TerracottaPattern";
 import H2Title from "@/components/typography/H2Title";
 import NavLink from "@/components/ui/NavLink";
 import Paragraph from "@/components/typography/Paragraph";
-import MenuCard from "@/components/menu/MenuCard";
+import HomeDishGrid from "@/components/menu/HomeDishGrid";
 
 export default function Home() {
   return (
@@ -110,10 +110,7 @@ export default function Home() {
             Перейти в раздел
           </NavLink>
         </div>
-        <MenuCard name="Тандури чикен" spicy className="col-span-3" />
-        <MenuCard name="Курма" nut delay={0.1} className="col-span-3" />
-        <MenuCard name="Дал тадка" delay={0.2} className="col-span-3" />
-        <MenuCard name="Панир тикка" spicy delay={0.3} className="col-span-3" />
+        <HomeDishGrid />
       </Section>
     </main>
   );

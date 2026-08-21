@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import DishTag from "@/components/menu/DishTag";
 import Paragraph from "@/components/typography/Paragraph";
+import { cn } from "@/lib/utils";
 
 type DishPhotoCardProps = {
   src: string;
@@ -15,6 +16,7 @@ type DishPhotoCardProps = {
   spicy?: boolean;
   nut?: boolean;
   veg?: boolean;
+  onClick?: () => void;
 };
 
 export default function DishPhotoCard({
@@ -27,12 +29,29 @@ export default function DishPhotoCard({
   spicy,
   nut,
   veg,
+  onClick,
 }: DishPhotoCardProps) {
   const dishTag = spicy ? "spicy" : nut ? "nut" : undefined;
 
   return (
     <motion.div
-      className="group col-span-3 flex flex-col gap-3"
+      className={cn(
+        "group col-span-3 flex flex-col gap-3",
+        onClick && "cursor-pointer",
+      )}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay, ease: "easeOut" }}
@@ -45,9 +64,7 @@ export default function DishPhotoCard({
           height={600}
           className="h-96 w-full rounded-sm object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        {dishTag && (
-          <DishTag tag={dishTag} className="absolute top-2 left-2" />
-        )}
+        {dishTag && <DishTag tag={dishTag} className="absolute top-2 left-2" />}
         {veg && (
           <Paragraph className="bg-biege text-chocolate absolute bottom-2 left-2 rounded-[2.625rem] p-2">
             Вегетарианское
