@@ -9,7 +9,6 @@ import Max from "@/components/social/Max";
 import Telegram from "@/components/social/Telegram";
 import WhatsApp from "@/components/social/WhatsApp";
 import { cn } from "@/lib/utils";
-import hero from "@/public/hero.jpg";
 import sample1 from "@/public/menu_sample_01.jpg";
 import sample2 from "@/public/menu_sample_02.jpg";
 import NavLink from "@/components/ui/NavLink";
@@ -22,7 +21,12 @@ type Props = {
   onClose: () => void;
 };
 
-export default function MenuNavItem({ open, onEnter, onLeave, onClose }: Props) {
+export default function MenuNavItem({
+  open,
+  onEnter,
+  onLeave,
+  onClose,
+}: Props) {
   return (
     <>
       <span
@@ -74,7 +78,11 @@ export default function MenuNavItem({ open, onEnter, onLeave, onClose }: Props) 
                   className="h-96 w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
                 />
               </div>
-              <NavLink as="span" href="/menu">
+              <NavLink
+                as="span"
+                href="/menu"
+                className="text-chocolate group-hover/card:text-terracotta"
+              >
                 Основное меню
               </NavLink>
             </Link>
@@ -93,7 +101,13 @@ export default function MenuNavItem({ open, onEnter, onLeave, onClose }: Props) 
                   className="h-96 w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
                 />
               </div>
-              <NavLink as="span" href="/menu?tab=bar">Барная карта</NavLink>
+              <NavLink
+                as="span"
+                href="/menu?tab=bar"
+                className="text-chocolate group-hover/card:text-terracotta"
+              >
+                Барная карта
+              </NavLink>
             </Link>
 
             <div className="col-span-3 col-start-10 flex flex-col justify-center px-22 text-left">

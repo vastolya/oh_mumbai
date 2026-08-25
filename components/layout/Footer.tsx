@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Section from "@/components/layout/Section";
 import Image from "next/image";
 import H3Title from "@/components/typography/H3Title";
@@ -13,54 +16,64 @@ import Max from "@/components/social/Max";
 import WhatsApp from "@/components/social/WhatsApp";
 
 export default function Footer() {
+  const dontShowFooter = usePathname() !== "/contacts";
+
   return (
-    <footer className="bg-green pt-30">
+    <footer className="bg-green">
       <Section className="gap-y-0">
-        <H2Title className="col-span-12 pb-12">
-          Индийский ресторан <br /> в центре Санкт-Петербурга
-        </H2Title>
+        {dontShowFooter && (
+          <H2Title className="col-span-12 pt-30 pb-12">
+            Индийский ресторан <br /> в центре Санкт-Петербурга
+          </H2Title>
+        )}
 
-        <Image
-          src={map}
-          alt="Карта: ресторан в центре Санкт-Петербурга"
-          placeholder="blur"
-          sizes="25vw"
-          className="col-span-3 h-96 w-full rounded-xs object-cover"
-        />
+        {dontShowFooter && (
+          <Image
+            src={map}
+            alt="Карта: ресторан в центре Санкт-Петербурга"
+            placeholder="blur"
+            sizes="25vw"
+            className="col-span-3 h-96 w-full rounded-xs object-cover"
+          />
+        )}
 
-        <iframe
-          src="https://yandex.ru/map-widget/v1/?um=constructor%3A293e3281ebadb0ae5e51aacb62c119479e04233fe39f816720af2395c6d7526b&source=constructor"
-          title="Карта: как добраться до ресторана"
-          loading="lazy"
-          allowFullScreen
-          className="col-span-3 h-96 w-full rounded-xs"
-        />
+        {dontShowFooter && (
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A293e3281ebadb0ae5e51aacb62c119479e04233fe39f816720af2395c6d7526b&source=constructor"
+            title="Карта: как добраться до ресторана"
+            loading="lazy"
+            allowFullScreen
+            className="col-span-3 h-96 w-full rounded-xs"
+          />
+        )}
 
-        <div className="col-span-6 flex flex-col justify-end">
-          <Paragraph className="pb-4">
-            Санкт-Петербург, переулок Гривцова, 2
-          </Paragraph>
-          <Paragraph className="pb-2">Пн–Пт 12:00–23:00</Paragraph>
-          <Paragraph className="pb-11">Сб–Вс 13:00–23:00</Paragraph>
-          <H3Title className="pb-8">
-            <a
-              href="tel:+78123140340"
-              className="hover:text-terracotta-hover transition-colors duration-300"
-            >
-              +7 (812) 314-03-40
-            </a>
-          </H3Title>
+        {dontShowFooter && (
+          <div className="col-span-6 flex flex-col justify-end">
+            <Paragraph className="pb-4">
+              Санкт-Петербург, переулок Гривцова, 2
+            </Paragraph>
+            <Paragraph className="pb-2">Пн–Пт 12:00–23:00</Paragraph>
+            <Paragraph className="pb-11">Сб–Вс 13:00–23:00</Paragraph>
+            <H3Title className="pb-8">
+              <a
+                href="tel:+78123140340"
+                className="hover:text-terracotta-hover transition-colors duration-300"
+              >
+                +7 (812) 314-03-40
+              </a>
+            </H3Title>
 
-          <H3Title className="pb-11">
-            <a
-              href="mailto:info@ohmumbai.ru"
-              className="hover:text-terracotta-hover transition-colors duration-300"
-            >
-              info@ohmumbai.ru
-            </a>
-          </H3Title>
-          <BookingButton className="w-fit">Забронировать стол</BookingButton>
-        </div>
+            <H3Title className="pb-11">
+              <a
+                href="mailto:info@ohmumbai.ru"
+                className="hover:text-terracotta-hover transition-colors duration-300"
+              >
+                info@ohmumbai.ru
+              </a>
+            </H3Title>
+            <BookingButton className="w-fit">Забронировать стол</BookingButton>
+          </div>
+        )}
 
         <div className="border-biege col-span-12 flex items-center justify-between border-b-2 pt-20 pb-8">
           <div className="flex gap-5">
