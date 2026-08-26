@@ -51,7 +51,8 @@ export default function Header() {
     <div
       ref={divRef}
       className={cn(
-        "fixed top-0 right-0 left-0 z-40 bg-chocolate transition-transform duration-300 ease-in-out",
+        "fixed top-0 right-0 left-0 z-40 transition-[transform,background-color] duration-300 ease-in-out",
+        menuOpen ? "bg-white" : "bg-chocolate",
         hidden && "-translate-y-full",
       )}
     >
@@ -62,7 +63,8 @@ export default function Header() {
       >
         <div
           className={cn(
-            "flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal text-white",
+            "flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal transition-colors duration-150",
+          menuOpen ? "text-chocolate" : "text-white",
           )}
         >
           <MenuNavItem
@@ -78,7 +80,7 @@ export default function Header() {
 
         <Link href="/">
           <Logo
-            className="w-38 text-biege"
+            className={cn("w-38 transition-colors duration-150", menuOpen ? "text-chocolate" : "text-biege")}
           />
         </Link>
         <BookingButton>Забронировать +7 (812) 314-03-40</BookingButton>

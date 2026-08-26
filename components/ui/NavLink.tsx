@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Arrow from "@/components/icons/Arrow";
 import Chevron from "@/components/icons/Chevron";
 import { cn } from "@/lib/utils";
@@ -47,6 +50,9 @@ export default function NavLink({
   arrow = false,
   className,
 }: NavLinkProps) {
+  const pathname = usePathname();
+  const active = href && pathname === href;
+
   if (as === "span") {
     return (
       <span className={cn(BASE, className)}>
@@ -58,7 +64,7 @@ export default function NavLink({
   }
 
   return (
-    <Link href={href!} className={cn(BASE, className)}>
+    <Link href={href!} className={cn(BASE, active && "text-green", className)}>
       <NavLinkInner chevron={chevron} arrow={arrow}>
         {children}
       </NavLinkInner>

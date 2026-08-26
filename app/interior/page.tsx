@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Interior from "@/public/interior.jpg";
 import Interior01 from "@/public/interior_01.jpg";
@@ -22,6 +23,13 @@ import Paragraph from "@/components/typography/Paragraph";
 import InteriorPhotoModal, {
   InteriorPhoto,
 } from "@/components/interior/InteriorPhotoModal";
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay, ease: "easeOut" as const },
+});
 
 const photos: InteriorPhoto[] = [
   {
@@ -86,38 +94,48 @@ export default function InteriorPage() {
   return (
     <main className="bg-biege">
       <div className="relative flex h-79 w-screen items-center justify-center">
-        <Image
-          src={Interior}
-          alt="Интерьер индийского ресторана Oh Mumbai в Санкт-Петербурге"
-          fill
-          className="object-cover object-[center_75%]"
-        />
-        <H1Title className="relative z-20">Интерьер</H1Title>
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <Image
+            src={Interior}
+            alt="Интерьер индийского ресторана Oh Mumbai в Санкт-Петербурге"
+            fill
+            priority
+            className="object-cover object-[center_75%]"
+          />
+        </motion.div>
+        <H1Title className="relative z-20" delay={0.3}>
+          Интерьер
+        </H1Title>
       </div>
 
       <Section className="text-chocolate gap-y-0">
         <div className="col-span-6 py-30">
-          <H3Title className="pb-6">
+          <H3Title className="pb-6" delay={0}>
             Ресторан рассчитан на 37 посадочных мест
           </H3Title>
-          <Paragraph className="pb-2">
+          <Paragraph className="pb-2" delay={0.1}>
             Премиальное пространство, где распределение мест позволяет соблюдать{" "}
             <br />
             приватность гостей
           </Paragraph>
-          <Paragraph>
+          <Paragraph delay={0.2}>
             При этом в центре зала — коммунальный стол, который позволяет
             объединять <br /> большие компании вечером или располагает к обеду
             среди других гостей
           </Paragraph>
         </div>
         <div className="col-span-6 py-30">
-          <Paragraph className="pb-2">
+          <Paragraph className="pb-2" delay={0.15}>
             Основная идея дизайна — создать осмысленный современный <br />
             комфорт и транслировать именно ту интерпретацию Индии, которой
             <br /> хочет поделиться с гостями сама хозяйка заведения Шалини
           </Paragraph>
-          <Paragraph>
+          <Paragraph delay={0.25}>
             Стилистика интерьера близка к этно-модерну. Дизайн-код строится
             на контрасте <br /> двух составляющих: этнической аутентичности
             и современного комфорта. Глубокая бархатистая терракота и цвет
@@ -126,11 +144,12 @@ export default function InteriorPage() {
         </div>
 
         {[0, 1, 2, 3].map((i) => (
-          <button
+          <motion.button
             key={i}
             type="button"
             onClick={() => open(i)}
             className="group col-span-3 h-96 w-full cursor-pointer overflow-hidden rounded-sm"
+            {...fadeUp(i * 0.1)}
           >
             <Image
               src={photos[i].src}
@@ -139,13 +158,14 @@ export default function InteriorPage() {
               height={384}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </button>
+          </motion.button>
         ))}
 
-        <button
+        <motion.button
           type="button"
           onClick={() => open(4)}
           className="group col-span-12 mt-6 h-197 w-full cursor-pointer overflow-hidden rounded-sm"
+          {...fadeUp(0)}
         >
           <Image
             src={photos[4].src}
@@ -154,9 +174,9 @@ export default function InteriorPage() {
             height={788}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        </button>
+        </motion.button>
 
-        <Paragraph className="col-span-6 col-start-7 py-30">
+        <Paragraph className="col-span-6 col-start-7 py-30" delay={0.1}>
           Спокойная фоновая база интерьера с элементами декоративных приемов{" "}
           <br />
           собирается у центральной росписи в стиле фрески. Это мурал индийского
@@ -166,11 +186,12 @@ export default function InteriorPage() {
         </Paragraph>
 
         {[5, 6].map((i) => (
-          <button
+          <motion.button
             key={i}
             type="button"
             onClick={() => open(i)}
             className="group col-span-6 h-96 w-full cursor-pointer overflow-hidden rounded-sm"
+            {...fadeUp((i - 5) * 0.15)}
           >
             <Image
               src={photos[i].src}
@@ -179,13 +200,14 @@ export default function InteriorPage() {
               height={384}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </button>
+          </motion.button>
         ))}
 
-        <button
+        <motion.button
           type="button"
           onClick={() => open(7)}
           className="group col-span-12 my-6 h-197 w-full cursor-pointer overflow-hidden rounded-sm"
+          {...fadeUp(0)}
         >
           <Image
             src={photos[7].src}
@@ -194,14 +216,15 @@ export default function InteriorPage() {
             height={384}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        </button>
+        </motion.button>
 
         {[8, 9, 10, 11].map((i) => (
-          <button
+          <motion.button
             key={i}
             type="button"
             onClick={() => open(i)}
             className="group col-span-3 h-96 w-full cursor-pointer overflow-hidden rounded-sm"
+            {...fadeUp((i - 8) * 0.1)}
           >
             <Image
               src={photos[i].src}
@@ -210,10 +233,10 @@ export default function InteriorPage() {
               height={384}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </button>
+          </motion.button>
         ))}
 
-        <Paragraph className="col-span-6 col-start-7 py-30">
+        <Paragraph className="col-span-6 col-start-7 py-30" delay={0.1}>
           Такой формат подходит тем, кто ищет ресторан для свадьбы, банкета для
           близких или <br /> небольших корпоративов в Санкт-Петербурге –
           атмосфера Oh!Mumbai <br /> подходит для любого повода. Будем рады
