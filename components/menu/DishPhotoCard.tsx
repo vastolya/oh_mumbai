@@ -66,24 +66,21 @@ export default function DishPhotoCard({
         />
         {dishTag && <DishTag tag={dishTag} className="absolute top-2 left-2" />}
         {veg && (
-          <Paragraph className="bg-biege text-chocolate absolute bottom-2 left-2 rounded-[2.625rem] p-2">
+          <Paragraph className="bg-biege/20 absolute top-2 right-2 rounded-[2.625rem] p-2 backdrop-blur-sm">
             Вегетарианское
           </Paragraph>
         )}
       </div>
 
       <div className="flex flex-1 flex-col">
-        <Paragraph className="text-chocolate pb-3">{name}</Paragraph>
-        <div className="flex flex-1 items-end gap-8">
-          <Paragraph className="text-gray flex-1 text-sm">
-            {description}
-          </Paragraph>
-          <div className="flex shrink-0 items-end gap-2">
-            <Paragraph className="text-gray">{weight}</Paragraph>
-            <Paragraph className="text-gray">·</Paragraph>
-            <Paragraph className="text-chocolate">{price}</Paragraph>
-          </div>
+        <Paragraph className="text-chocolate">{name}</Paragraph>
+        <div className="flex justify-between pb-1">
+          <Paragraph className="text-gray">{weight}</Paragraph>{" "}
+          <Paragraph className="text-chocolate">{price}</Paragraph>{" "}
         </div>
+        <Paragraph className="text-gray flex-1 text-sm">
+          {description}
+        </Paragraph>
       </div>
     </motion.div>
   );

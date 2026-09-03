@@ -21,7 +21,10 @@ export default function Header() {
     const el = divRef.current;
     if (!el) return;
     const ro = new ResizeObserver(() => {
-      document.documentElement.style.setProperty("--header-h", `${el.offsetHeight}px`);
+      document.documentElement.style.setProperty(
+        "--header-h",
+        `${el.offsetHeight}px`,
+      );
     });
     ro.observe(el);
     return () => ro.disconnect();
@@ -64,7 +67,7 @@ export default function Header() {
         <div
           className={cn(
             "flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal transition-colors duration-150",
-          menuOpen ? "text-chocolate" : "text-white",
+            menuOpen ? "text-chocolate" : "text-white",
           )}
         >
           <MenuNavItem
@@ -80,10 +83,13 @@ export default function Header() {
 
         <Link href="/">
           <Logo
-            className={cn("w-38 transition-colors duration-150", menuOpen ? "text-chocolate" : "text-biege")}
+            className={cn(
+              "w-38 transition-colors duration-150",
+              menuOpen ? "text-chocolate" : "text-biege",
+            )}
           />
         </Link>
-        <BookingButton>Забронировать +7 (812) 314-03-40</BookingButton>
+        <BookingButton>Забронировать</BookingButton>
       </Section>
     </div>
   );

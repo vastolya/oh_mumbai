@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 type H1TitleProps = {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-  animate?: import('framer-motion').TargetAndTransition
-  disableAnimation?: boolean
-}
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+  animate?: import("framer-motion").TargetAndTransition;
+  disableAnimation?: boolean;
+};
 
 const H1Title = ({
   children,
@@ -20,22 +20,22 @@ const H1Title = ({
   disableAnimation = false,
 }: H1TitleProps) => {
   const titleClassName = cn(
-    'font-gertika text-center text-[72px] leading-[105%] font-bold tracking-[-0.01em]',
+    "font-gertika text-center text-[3.75rem] leading-[105%] font-bold tracking-[-0.01em]",
     className,
-  )
+  );
 
   if (disableAnimation) {
-    return <h1 className={titleClassName}>{children}</h1>
+    return <h1 className={titleClassName}>{children}</h1>;
   }
 
   return (
     <motion.h1
-      initial={{ x: 40, opacity: 0 }}
+      initial={{ y: 20, opacity: 0 }}
       {...(animateProp
         ? { animate: animateProp }
-        : { whileInView: { x: 0, opacity: 1 }, viewport: { once: true } })}
+        : { whileInView: { y: 0, opacity: 1 }, viewport: { once: true } })}
       transition={{
-        type: 'spring',
+        type: "spring",
         stiffness: 80,
         damping: 15,
         delay,
@@ -44,7 +44,7 @@ const H1Title = ({
     >
       {children}
     </motion.h1>
-  )
-}
+  );
+};
 
-export default H1Title
+export default H1Title;

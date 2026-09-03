@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="ru">
       <body>
         <Header />
-        <div style={{ paddingTop: "var(--header-h, 0px)" }}>{children}</div>
+        <div style={{ paddingTop: "var(--header-h, 0px) " }}>{children}</div>
         <Footer />
       </body>
     </html>

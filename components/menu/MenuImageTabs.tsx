@@ -43,24 +43,167 @@ const CARDS: {
   nut?: boolean;
   veg?: boolean;
 }[] = [
-  { src: "/menu_sample_01.jpg", alt: "Баттер чикен", description: "Нежная курица в сливочно-томатном соусе с кардамоном и кориандром", price: "520 ₽", weight: "320 г", tab: "menu", spicy: true },
-  { src: "/menu_sample_02.jpg", alt: "Палак панир", description: "Домашний сыр в насыщенном шпинатном соусе со специями", price: "420 ₽", weight: "280 г", tab: "menu", veg: true },
-  { src: "/menu_sample_01.jpg", alt: "Самоса", description: "Хрустящие пирожки с пряной начинкой из картофеля и гороха", price: "220 ₽", weight: "180 г", tab: "menu", veg: true },
-  { src: "/menu_sample_02.jpg", alt: "Биряни с бараниной", description: "Ароматный рис с томлёной бараниной, шафраном и жареным луком", price: "640 ₽", weight: "400 г", tab: "menu", spicy: true },
-  { src: "/menu_sample_01.jpg", alt: "Дал махани", description: "Чёрная чечевица, томлёная ночь с маслом и сливками", price: "380 ₽", weight: "300 г", tab: "menu", veg: true },
-  { src: "/menu_sample_02.jpg", alt: "Рыба тандури", description: "Филе в маринаде из йогурта и специй, запечённое в тандуре", price: "580 ₽", weight: "280 г", tab: "menu" },
-  { src: "/menu_sample_01.jpg", alt: "Тикка масала", description: "Курица на углях в остром томатном соусе с пажитником", price: "560 ₽", weight: "340 г", tab: "menu", spicy: true },
-  { src: "/menu_sample_02.jpg", alt: "Курица тандури", description: "Целая нога в йогуртовом маринаде, с дымком живого огня", price: "490 ₽", weight: "380 г", tab: "menu" },
-  { src: "/menu_sample_01.jpg", alt: "Хайдарабади биряни", description: "Рис по-хайдарабадски с бараниной, мятой и жареными орехами", price: "690 ₽", weight: "420 г", tab: "menu", nut: true },
-  { src: "/menu_sample_02.jpg", alt: "Саг алу", description: "Молодой картофель с нежным шпинатом и куркумой", price: "360 ₽", weight: "260 г", tab: "menu", veg: true },
-  { src: "/menu_sample_01.jpg", alt: "Яичница масала", description: "Яйца с томатами, луком и смесью специй по-мумбайски", price: "290 ₽", weight: "220 г", tab: "zavtrak", spicy: true },
-  { src: "/menu_sample_02.jpg", alt: "Авокадо тост", description: "Тост с авокадо, редисом, кинзой и зернистой горчицей", price: "320 ₽", weight: "200 г", tab: "zavtrak", veg: true },
-  { src: "/menu_sample_01.jpg", alt: "Сырный наан", description: "Лепёшка из тандура с расплавленным сыром и зелёным луком", price: "260 ₽", weight: "160 г", tab: "zavtrak", veg: true },
-  { src: "/menu_sample_02.jpg", alt: "Парата с картофелем", description: "Слоёная пшеничная лепёшка с пряной картофельной начинкой", price: "280 ₽", weight: "180 г", tab: "zavtrak", veg: true },
-  { src: "/menu_sample_01.jpg", alt: "Овощной омлет", description: "Пышный омлет с болгарским перцем, помидорами и зеленью", price: "240 ₽", weight: "200 г", tab: "zavtrak", veg: true },
-  { src: "/menu_sample_02.jpg", alt: "Манго ласси", description: "Густой йогуртовый напиток с альфонсо-манго и кардамоном", price: "220 ₽", weight: "300 мл", tab: "bar", veg: true },
-  { src: "/menu_sample_01.jpg", alt: "Чай масала", description: "Крепкий чай с молоком, имбирём, гвоздикой и корицей", price: "180 ₽", weight: "250 мл", tab: "bar", veg: true },
-  { src: "/menu_sample_02.jpg", alt: "Имбирный лимонад", description: "Свежевыжатый лайм, имбирный сироп, мята и газированная вода", price: "200 ₽", weight: "350 мл", tab: "bar", veg: true },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Баттер чикен",
+    description:
+      "Нежная курица в сливочно-томатном соусе с кардамоном и кориандром",
+    price: "520 ₽",
+    weight: "320 г",
+    tab: "menu",
+    spicy: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Палак панир",
+    description: "Домашний сыр в насыщенном шпинатном соусе со специями",
+    price: "420 ₽",
+    weight: "280 г",
+    tab: "menu",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Самоса",
+    description: "Хрустящие пирожки с пряной начинкой из картофеля и гороха",
+    price: "220 ₽",
+    weight: "180 г",
+    tab: "menu",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Биряни с бараниной",
+    description: "Ароматный рис с томлёной бараниной, шафраном и жареным луком",
+    price: "640 ₽",
+    weight: "400 г",
+    tab: "menu",
+    spicy: true,
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Дал махани",
+    description: "Чёрная чечевица, томлёная ночь с маслом и сливками",
+    price: "380 ₽",
+    weight: "300 г",
+    tab: "menu",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Рыба тандури",
+    description: "Филе в маринаде из йогурта и специй, запечённое в тандуре",
+    price: "580 ₽",
+    weight: "280 г",
+    tab: "menu",
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Тикка масала",
+    description: "Курица на углях в остром томатном соусе с пажитником",
+    price: "560 ₽",
+    weight: "340 г",
+    tab: "menu",
+    spicy: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Курица тандури",
+    description: "Целая нога в йогуртовом маринаде, с дымком живого огня",
+    price: "490 ₽",
+    weight: "380 г",
+    tab: "menu",
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Хайдарабади биряни",
+    description: "Рис по-хайдарабадски с бараниной, мятой и жареными орехами",
+    price: "690 ₽",
+    weight: "420 г",
+    tab: "menu",
+    nut: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Саг алу",
+    description: "Молодой картофель с нежным шпинатом и куркумой",
+    price: "360 ₽",
+    weight: "260 г",
+    tab: "menu",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Яичница масала",
+    description: "Яйца с томатами, луком и смесью специй по-мумбайски",
+    price: "290 ₽",
+    weight: "220 г",
+    tab: "zavtrak",
+    spicy: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Авокадо тост",
+    description: "Тост с авокадо, редисом, кинзой и зернистой горчицей",
+    price: "320 ₽",
+    weight: "200 г",
+    tab: "zavtrak",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Сырный наан",
+    description: "Лепёшка из тандура с расплавленным сыром и зелёным луком",
+    price: "260 ₽",
+    weight: "160 г",
+    tab: "zavtrak",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Парата с картофелем",
+    description: "Слоёная пшеничная лепёшка с пряной картофельной начинкой",
+    price: "280 ₽",
+    weight: "180 г",
+    tab: "zavtrak",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Овощной омлет",
+    description: "Пышный омлет с болгарским перцем, помидорами и зеленью",
+    price: "240 ₽",
+    weight: "200 г",
+    tab: "zavtrak",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Манго ласси",
+    description: "Густой йогуртовый напиток с альфонсо-манго и кардамоном",
+    price: "220 ₽",
+    weight: "300 мл",
+    tab: "bar",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_01.jpg",
+    alt: "Чай масала",
+    description: "Крепкий чай с молоком, имбирём, гвоздикой и корицей",
+    price: "180 ₽",
+    weight: "250 мл",
+    tab: "bar",
+    veg: true,
+  },
+  {
+    src: "/menu_sample_02.jpg",
+    alt: "Имбирный лимонад",
+    description: "Свежевыжатый лайм, имбирный сироп, мята и газированная вода",
+    price: "200 ₽",
+    weight: "350 мл",
+    tab: "bar",
+    veg: true,
+  },
 ];
 
 export default function MenuImageTabs() {
@@ -93,7 +236,11 @@ export default function MenuImageTabs() {
         {TABS.map((tab, i) => (
           <button
             key={tab.label}
-            onClick={() => { setManualTab(i); setVisibleCount(8); setSelectedIndex(null); }}
+            onClick={() => {
+              setManualTab(i);
+              setVisibleCount(8);
+              setSelectedIndex(null);
+            }}
             className="font-geometria relative cursor-pointer rounded-[3rem] px-4 py-2 text-base leading-[150%] font-normal"
           >
             {i === active && (
@@ -115,7 +262,7 @@ export default function MenuImageTabs() {
 
         <button
           onClick={() => setViewMode((v) => (v === "image" ? "grid" : "image"))}
-          className="absolute right-0 flex cursor-pointer items-center py-2 text-gray transition-colors duration-200 hover:text-chocolate"
+          className="text-gray hover:text-chocolate absolute right-0 flex cursor-pointer items-center py-2 transition-colors duration-200"
         >
           <Paragraph className="text-sm">
             {viewMode === "image" ? "Фото" : "PDF"}
@@ -160,7 +307,7 @@ export default function MenuImageTabs() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="grid grid-cols-12 gap-6"
+            className="grid grid-cols-12 gap-6 gap-y-8"
           >
             {filteredCards.slice(0, visibleCount).map((card, i) => (
               <DishPhotoCard
@@ -209,7 +356,9 @@ export default function MenuImageTabs() {
         }
         dishIndex={selectedIndex ?? 0}
         onClose={() => setSelectedIndex(null)}
-        onPrev={() => setSelectedIndex((i) => (i !== null && i > 0 ? i - 1 : i))}
+        onPrev={() =>
+          setSelectedIndex((i) => (i !== null && i > 0 ? i - 1 : i))
+        }
         onNext={() =>
           setSelectedIndex((i) =>
             i !== null && i < filteredCards.length - 1 ? i + 1 : i,

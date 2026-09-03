@@ -27,7 +27,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
       className="w-172 max-w-full p-12"
     >
       <Paragraph
-        animate={{ x: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         delay={0.1}
         className="text-chocolate pb-6 text-center"
       >
@@ -36,12 +36,12 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
 
       <div className="grid grid-cols-2 gap-6 text-center">
         <div>
-          <Paragraph animate={{ x: 0, opacity: 1 }} delay={0.2} className="text-gray pb-2">
+          <Paragraph animate={{ y: 0, opacity: 1 }} delay={0.2} className="text-gray pb-2">
             По телефону
           </Paragraph>
           <a href={PHONE_HREF}>
             <H3Title
-              animate={{ x: 0, opacity: 1 }}
+              animate={{ y: 0, opacity: 1 }}
               delay={0.3}
               className="text-terracotta hover:text-terracotta-hover px-9 py-3 whitespace-nowrap"
             >
@@ -51,7 +51,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
         </div>
 
         <div>
-          <Paragraph animate={{ x: 0, opacity: 1 }} delay={0.38} className="text-gray pb-2">
+          <Paragraph animate={{ y: 0, opacity: 1 }} delay={0.38} className="text-gray pb-2">
             В мессенджер
           </Paragraph>
           <div className="flex justify-center gap-4">

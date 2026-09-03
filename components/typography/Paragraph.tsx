@@ -30,10 +30,10 @@ const Paragraph = ({
 
   return (
     <motion.p
-      initial={{ x: 40, opacity: 0 }}
+      initial={{ y: 20, opacity: 0 }}
       {...(animateProp
         ? { animate: animateProp }
-        : { whileInView: { x: 0, opacity: 1 }, viewport: { once: true } })}
+        : { whileInView: { y: 0, opacity: 1 }, viewport: { once: true } })}
       transition={{
         type: "spring",
         stiffness: 80,

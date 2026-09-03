@@ -20,7 +20,7 @@ const H3Title = ({
   disableAnimation = false,
 }: H3TitleProps) => {
   const titleClassName = cn(
-    "text-xl leading-[118%] font-bold tracking-normal md:text-2xl md:leading-[116%] md:font-extrabold md:tracking-normal",
+    "leading-[118%] font-normal tracking-normal text-2xl font-gertika",
     className,
   );
 
@@ -30,10 +30,10 @@ const H3Title = ({
 
   return (
     <motion.h3
-      initial={{ x: 40, opacity: 0 }}
+      initial={{ y: 20, opacity: 0 }}
       {...(animateProp
         ? { animate: animateProp }
-        : { whileInView: { x: 0, opacity: 1 }, viewport: { once: true } })}
+        : { whileInView: { y: 0, opacity: 1 }, viewport: { once: true } })}
       transition={{
         type: "spring",
         stiffness: 80,

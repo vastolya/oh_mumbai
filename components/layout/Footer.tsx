@@ -20,13 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-green">
-      <Section className="gap-y-0">
-        {dontShowFooter && (
-          <H2Title className="col-span-12 pt-30 pb-12">
-            Индийский ресторан <br /> в центре Санкт-Петербурга
-          </H2Title>
-        )}
-
+      <Section className="gap-y-0 pt-30">
         {dontShowFooter && (
           <Image
             src={map}
@@ -48,30 +42,47 @@ export default function Footer() {
         )}
 
         {dontShowFooter && (
-          <div className="col-span-6 flex flex-col justify-end">
-            <Paragraph className="pb-4">
-              Санкт-Петербург, переулок Гривцова, 2
-            </Paragraph>
-            <Paragraph className="pb-2">Пн–Пт 12:00–23:00</Paragraph>
-            <Paragraph className="pb-11">Сб–Вс 13:00–23:00</Paragraph>
-            <H3Title className="pb-8">
-              <a
-                href="tel:+78123140340"
-                className="hover:text-terracotta-hover transition-colors duration-300"
-              >
-                +7 (812) 314-03-40
-              </a>
-            </H3Title>
+          <div className="col-span-6 flex flex-col justify-between">
+            <H2Title>
+              Индийский ресторан <br /> в центре Санкт-Петербурга
+            </H2Title>
 
-            <H3Title className="pb-11">
-              <a
-                href="mailto:info@ohmumbai.ru"
-                className="hover:text-terracotta-hover transition-colors duration-300"
-              >
-                info@ohmumbai.ru
-              </a>
-            </H3Title>
-            <BookingButton className="w-fit">Забронировать стол</BookingButton>
+            <div>
+              <H3Title className="pb-6">
+                Санкт-Петербург, переулок Гривцова, 2
+              </H3Title>
+
+              <Paragraph className="pb-2">
+                <span className="text-gray-light">Пн–Пт</span> 12:00–23:00
+              </Paragraph>
+              <Paragraph className="pb-12">
+                <span className="text-gray-light">Сб–Вс</span> 13:00–23:00
+              </Paragraph>
+
+              <div className="flex gap-6">
+                <BookingButton className="w-fit">Забронировать</BookingButton>
+                <Paragraph className="flex flex-col justify-center">
+                  <a
+                    href="mailto:info@ohmumbai.ru"
+                    className="hover:text-terracotta-hover hover:decoration-terracotta-hover underline decoration-[#B7B8AD] underline-offset-2 transition-colors duration-300"
+                  >
+                    info@ohmumbai.ru
+                  </a>
+                </Paragraph>
+                <Paragraph className="text-gray-light flex flex-col justify-center">
+                  ·
+                </Paragraph>
+
+                <Paragraph className="flex flex-col justify-center">
+                  <a
+                    href="tel:+78123140340"
+                    className="hover:text-terracotta-hover hover:decoration-terracotta-hover underline decoration-[#B7B8AD] transition-colors duration-300"
+                  >
+                    +7 (812) 314-03-40
+                  </a>
+                </Paragraph>
+              </div>
+            </div>
           </div>
         )}
 
