@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 
+import { typograph } from "@/lib/typo";
 import { cn } from "@/lib/utils";
 
 type ParagraphProps = {
@@ -20,12 +21,14 @@ const Paragraph = ({
   disableAnimation = false,
 }: ParagraphProps) => {
   const paragraphClassName = cn(
-    "font-geometria text-base leading-[150%] font-normal tracking-normal",
+    "font-geometria text-base leading-[150%] font-normal tracking-normal text-pretty",
     className,
   );
 
+  const content = typograph(children);
+
   if (disableAnimation) {
-    return <p className={paragraphClassName}>{children}</p>;
+    return <p className={paragraphClassName}>{content}</p>;
   }
 
   return (
@@ -42,7 +45,7 @@ const Paragraph = ({
       }}
       className={paragraphClassName}
     >
-      {children}
+      {content}
     </motion.p>
   );
 };

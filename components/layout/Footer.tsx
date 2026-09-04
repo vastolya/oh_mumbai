@@ -14,13 +14,16 @@ import Link from "next/link";
 import Telegram from "@/components/social/Telegram";
 import Max from "@/components/social/Max";
 import WhatsApp from "@/components/social/WhatsApp";
+import Info from "@/components/icons/Info";
+import Tooltip from "@/components/ui/Tooltip";
+import { cn } from "@/lib/utils";
 
 export default function Footer() {
   const dontShowFooter = usePathname() !== "/contacts";
 
   return (
     <footer className="bg-green">
-      <Section className="gap-y-0 pt-30">
+      <Section className={cn("gap-y-0", dontShowFooter && "pt-30")}>
         {dontShowFooter && (
           <Image
             src={map}
@@ -48,9 +51,15 @@ export default function Footer() {
             </H2Title>
 
             <div>
-              <H3Title className="pb-6">
-                Санкт-Петербург, переулок Гривцова, 2
-              </H3Title>
+              <div className="flex items-center gap-6 pb-6">
+                <H3Title>Санкт-Петербург, переулок Гривцова, 2</H3Title>
+                <Tooltip content="Историческое здание на пересечении с набережной реки Мойки, вблизи Исаакиевского собора и Красного моста, рядом с метро Адмиралтейская">
+                  <Info
+                    size={24}
+                    className="text-gray-light hover:text-biege shrink-0 cursor-help transition-colors duration-300"
+                  />
+                </Tooltip>
+              </div>
 
               <Paragraph className="pb-2">
                 <span className="text-gray-light">Пн–Пт</span> 12:00–23:00

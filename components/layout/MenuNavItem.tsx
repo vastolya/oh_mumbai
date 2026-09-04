@@ -120,12 +120,8 @@ export default function MenuNavItem({
                 </a>
               </Paragraph>
 
-              <Paragraph
-                className="text-chocolate pb-4 whitespace-nowrap"
-                delay={0.2}
-              >
-                Санкт-Петербург, <br />
-                переулок Гривцова, 2
+              <Paragraph className="text-chocolate pb-4" delay={0.2}>
+                Санкт-Петербург, переулок Гривцова, 2
               </Paragraph>
 
               <Paragraph className="text-chocolate pb-2" delay={0.3}>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 
+import { typograph } from "@/lib/typo";
 import { cn } from "@/lib/utils";
 
 type H2TitleProps = {
@@ -24,8 +25,10 @@ const H2Title = ({
     className,
   );
 
+  const content = typograph(children);
+
   if (disableAnimation) {
-    return <h2 className={titleClassName}>{children}</h2>;
+    return <h2 className={titleClassName}>{content}</h2>;
   }
 
   return (
@@ -42,7 +45,7 @@ const H2Title = ({
       }}
       className={titleClassName}
     >
-      {children}
+      {content}
     </motion.h2>
   );
 };
