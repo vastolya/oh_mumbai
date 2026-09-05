@@ -110,8 +110,8 @@ export default function MenuNavItem({
               </NavLink>
             </Link>
 
-            <div className="col-span-3 col-start-10 flex flex-col justify-center px-22 text-left">
-              <Paragraph className="text-chocolate pb-6" delay={0.1}>
+            <div className="col-span-2 col-start-11 flex flex-col justify-center text-left">
+              <Paragraph className="text-chocolate pb-4" delay={0.1}>
                 <a
                   href="tel:+78123140340"
                   className="hover:text-terracotta-hover transition-colors duration-300"
@@ -120,15 +120,18 @@ export default function MenuNavItem({
                 </a>
               </Paragraph>
 
-              <Paragraph className="text-chocolate pb-4" delay={0.2}>
+              <Paragraph
+                className="text-chocolate pb-4 underline underline-offset-4"
+                delay={0.2}
+              >
                 Санкт-Петербург, переулок Гривцова, 2
               </Paragraph>
 
               <Paragraph className="text-chocolate pb-2" delay={0.3}>
-                <span className="text-sm">Пн–Пт</span> 12:00–23:00
+                <span className="text-gray text-sm">Пн–Пт</span> 12:00–23:00
               </Paragraph>
-              <Paragraph className="text-chocolate pb-6" delay={0.35}>
-                <span className="text-sm">Сб–Вс</span> 13:00–23:00
+              <Paragraph className="text-chocolate pb-4" delay={0.35}>
+                <span className="text-gray text-sm">Сб–Вс</span> 13:00–23:00
               </Paragraph>
 
               <div className="flex gap-4">

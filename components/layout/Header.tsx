@@ -59,14 +59,10 @@ export default function Header() {
         hidden && "-translate-y-full",
       )}
     >
-      <Section
-        as="header"
-        grid={false}
-        className="flex items-center justify-between"
-      >
+      <Section as="header" className="">
         <div
           className={cn(
-            "flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal transition-colors duration-150",
+            "col-span-5 flex gap-4 text-center text-base leading-[148%] font-normal tracking-normal transition-colors duration-150",
             menuOpen ? "text-chocolate" : "text-white",
           )}
         >
@@ -81,7 +77,7 @@ export default function Header() {
           <NavLink href="/contacts">Контакты</NavLink>
         </div>
 
-        <Link href="/">
+        <Link href="/" className="col-span-2 flex justify-center">
           <Logo
             className={cn(
               "w-38 transition-colors duration-150",
@@ -89,7 +85,9 @@ export default function Header() {
             )}
           />
         </Link>
-        <BookingButton>Забронировать</BookingButton>
+        <BookingButton className="col-span-2 col-start-11 my-4">
+          Забронировать
+        </BookingButton>
       </Section>
     </div>
   );
