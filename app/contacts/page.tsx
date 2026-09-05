@@ -32,19 +32,8 @@ export default function ContactsPage() {
               <span className="text-gray-light">Сб–Вс</span> 13:00–23:00
             </Paragraph>
 
-            <div className="flex gap-6">
+            <div className="flex justify-between">
               <BookingButton className="w-fit">Забронировать</BookingButton>
-              <Paragraph className="flex flex-col justify-center">
-                <a
-                  href="mailto:info@ohmumbai.ru"
-                  className="hover:text-terracotta-hover hover:decoration-terracotta-hover underline decoration-[#B7B8AD] underline-offset-2 transition-colors duration-300"
-                >
-                  info@ohmumbai.ru
-                </a>
-              </Paragraph>
-              <Paragraph className="text-gray-light flex flex-col justify-center">
-                ·
-              </Paragraph>
 
               <Paragraph className="flex flex-col justify-center">
                 <a
@@ -54,9 +43,23 @@ export default function ContactsPage() {
                   +7 (812) 314-03-40
                 </a>
               </Paragraph>
+
+              <Paragraph className="text-gray-light flex flex-col justify-center">
+                ·
+              </Paragraph>
+
+              <Paragraph className="flex flex-col justify-center">
+                <a
+                  href="mailto:info@ohmumbai.ru"
+                  className="hover:text-terracotta-hover hover:decoration-terracotta-hover underline decoration-[#B7B8AD] underline-offset-2 transition-colors duration-300"
+                >
+                  info@ohmumbai.ru
+                </a>
+              </Paragraph>
             </div>
           </div>
         </div>
+
         <iframe
           src="https://yandex.ru/map-widget/v1/?um=constructor%3A293e3281ebadb0ae5e51aacb62c119479e04233fe39f816720af2395c6d7526b&source=constructor"
           title="Карта: как добраться до ресторана"

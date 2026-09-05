@@ -21,7 +21,7 @@ const Paragraph = ({
   disableAnimation = false,
 }: ParagraphProps) => {
   const paragraphClassName = cn(
-    "font-geometria text-base leading-[150%] font-normal tracking-normal text-pretty",
+    "font-geometria text-base leading-[150%] font-medium tracking-normal text-pretty",
     className,
   );
 

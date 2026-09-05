@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Interior_05 from "@/public/interior_05.jpg";
-import Interior_08 from "@/public/interior_08.jpg";
+import Explore from "@/public/explore.jpg";
 import Table from "@/public/table.jpg";
 import Today from "@/public/today.jpg";
 import H1Title from "@/components/typography/H1Title";
@@ -33,7 +33,7 @@ export default function AboutPage() {
           />
         </motion.div>
         <H1Title className="relative z-20" delay={0.3}>
-          О ресторане Oh!Mumbai
+          О ресторане <br /> Oh!Mumbai
         </H1Title>
       </div>
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
 
         <div className="text-chocolate col-span-12 flex justify-between pb-12">
           <H2Title className="text-chocolate" delay={0}>
-            Индийский ресторан в самом центре Санкт-Петербурга
+            Индийский ресторан в самом <br /> центре Санкт-Петербурга
           </H2Title>
           <NavLink arrow href="/interior">
             Смотреть интерьер
@@ -95,51 +95,49 @@ export default function AboutPage() {
             src={Today}
             alt=""
             delay={0.1}
-            className="mb-2 h-61 rounded-sm"
+            className="mb-2 h-96 rounded-sm"
           />
           <Paragraph className="text-gray text-sm" delay={0.2}>
             Oh!Mumbai сегодня
           </Paragraph>
         </div>
+
         <div className="col-span-3">
-          <AnimatedImage delay={0.2} className="mb-2 h-61 rounded-sm" />
+          <AnimatedImage delay={0.2} className="mb-2 h-96 rounded-sm" />
           <Paragraph className="text-gray text-sm" delay={0.3}>
             шеф-повар Манджил
           </Paragraph>
         </div>
 
         <div className="col-span-6 flex flex-col gap-2">
-          <H3Title className="pb-4" delay={0.1}>
+          <H3Title className="pb-8" delay={0.1}>
             Ресторан Oh!Mumbai открывается вновь после смены владельцев и
             ребрендинга
           </H3Title>
+
           <Paragraph delay={0.2}>
-            Новая концепция сочетания семейных традиций и современного подхода,
-            интерьер в духе этно модерна и обновлённое меню, в сердце которого
-            традиционные рецепты от семьи владельцев Тьяги
+            Новая концепция сочетания семейных традиций и современного подхода,
+            интерьер в духе этно модерна и обновлённое меню, в сердце которого
+            традиционные рецепты от семьи владельцев Тьяги. Для нас было важно
+            сохранить команду, ведь ресторан работает на этом месте уже 13 лет.
+            Шеф-повар из Индии Манджил продолжит работу в обновлённом Oh!Mumbai,
+            а впервые в Россию он приехал также по приглашению Тьяги — работать
+            в их первом ресторане Swagat. Индийский шеф будет отвечать
+            за сохранение традиций, а над новой подачей работал приглашённый
+            бренд-шеф
           </Paragraph>
           <Paragraph delay={0.3}>
-            Для нас было важно сохранить команду, ведь ресторан работает на этом
-            месте уже 13 лет. Шеф-повар из Индии Манджил продолжит работу в
-            обновлённом Oh!Mumbai, а впервые в Россию он приехал также по
-            приглашению Тьяги — работать в их первом ресторане Swagat. Индийский
-            шеф будет отвечать за сохранение традиций, а над новой подачей
-            работал приглашённый бренд-шеф
-          </Paragraph>
-          <Paragraph delay={0.4}>
-            Располагаемся в сердце Адмиралтейского района, в историческом здании{" "}
-            на пересечении набережной Мойки и переулка Гривцова, неподалёку от
-            Красного моста и Исаакиевской площади
-          </Paragraph>
-          <Paragraph delay={0.5}>
-            Oh! Mumbai открылся там ещё в 2013 году, а сейчас продолжит работу в
-            обновлённом формате
+            Располагаемся в сердце Адмиралтейского района, в историческом здании
+            на пересечении набережной Мойки и переулка Гривцова, неподалёку
+            от Красного моста и Исаакиевской площади. Oh! Mumbai открылся
+            там ещё в 2013 году, а сейчас продолжит работу в обновлённом формате
           </Paragraph>
         </div>
 
         <AnimatedImage
-          className="col-span-12 my-30 h-197 rounded-sm"
+          className="col-span-12 mt-30 h-197 rounded-sm"
           delay={0}
+          src={Explore}
         />
       </Section>
     </main>
