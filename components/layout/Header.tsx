@@ -85,6 +85,7 @@ export default function Header() {
             )}
           />
         </Link>
+
         <BookingButton className="col-span-2 col-start-11 my-4">
           Забронировать
         </BookingButton>

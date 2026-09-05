@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Art from "@/public/art.jpg";
+import Explore from "@/public/explore.jpg";
 import Interior from "@/public/interior.jpg";
 import Interior01 from "@/public/interior_01.jpg";
-import Interior02 from "@/public/interior_02.jpg";
 import Interior03 from "@/public/interior_03.jpg";
 import Interior04 from "@/public/interior_04.jpg";
 import Interior05 from "@/public/interior_05.jpg";
@@ -16,6 +17,11 @@ import Interior09 from "@/public/interior_09.jpg";
 import Interior10 from "@/public/interior_10.jpg";
 import Interior11 from "@/public/interior_11.jpg";
 import Interior12 from "@/public/interior_12.jpg";
+import Interior14 from "@/public/interior_14.jpg";
+import Interior15 from "@/public/interior_15.jpg";
+import Interior16 from "@/public/interior_16.jpg";
+import Interior17 from "@/public/interior_17.jpg";
+import InteriorChair from "@/public/interior_chair.jpg";
 import H1Title from "@/components/typography/H1Title";
 import Section from "@/components/layout/Section";
 import H3Title from "@/components/typography/H3Title";
@@ -23,6 +29,7 @@ import Paragraph from "@/components/typography/Paragraph";
 import InteriorPhotoModal, {
   InteriorPhoto,
 } from "@/components/interior/InteriorPhotoModal";
+import { cn } from "@/lib/utils";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -33,32 +40,40 @@ const fadeUp = (delay: number) => ({
 
 const photos: InteriorPhoto[] = [
   {
-    src: Interior01,
-    alt: "Зал ресторана Oh Mumbai — терракотовые оттенки и этнический декор",
-  },
-  {
-    src: Interior02,
-    alt: "Посадочные места индийского ресторана Oh Mumbai в Петербурге",
-  },
-  {
-    src: Interior03,
-    alt: "Дизайн интерьера в стиле этно-модерн ресторана Oh Mumbai",
-  },
-  {
-    src: Interior04,
-    alt: "Коммунальный стол в центре зала ресторана Oh Mumbai",
-  },
-  {
-    src: Interior05,
+    src: Explore,
     alt: "Панорама зала ресторана Oh Mumbai — 37 мест, переулок Гривцова, Санкт-Петербург",
   },
   {
-    src: Interior06,
-    alt: "Мурал с индийским пейзажем — роспись в стиле фрески в ресторане Oh Mumbai",
+    src: Interior01,
+    alt: "Роспись с логотипом Oh Mumbai — терракотовые оттенки и этнический декор",
+  },
+  {
+    src: InteriorChair,
+    alt: "Посадочные места индийского ресторана Oh Mumbai в Петербурге",
   },
   {
     src: Interior07,
-    alt: "Атмосфера вечернего зала индийского ресторана Oh Mumbai",
+    alt: "Зал ресторана Oh Mumbai с плетёными люстрами и муралом",
+  },
+  {
+    src: Interior04,
+    alt: "Столик у окна с зеленью — приватная зона ресторана Oh Mumbai",
+  },
+  {
+    src: Interior06,
+    alt: "Барная стойка индийского ресторана Oh Mumbai в центре Санкт-Петербурга",
+  },
+  {
+    src: Interior,
+    alt: "Зал ресторана Oh Mumbai с диванами и винным шкафом",
+  },
+  {
+    src: Interior03,
+    alt: "Ниша у окна с бра — дизайн интерьера в стиле этно-модерн",
+  },
+  {
+    src: Interior14,
+    alt: "Мягкий диван у окна в индийском ресторане Oh Mumbai",
   },
   {
     src: Interior08,
@@ -66,18 +81,91 @@ const photos: InteriorPhoto[] = [
   },
   {
     src: Interior09,
-    alt: "Детали декора Oh Mumbai — цвет шафрана и бархатистая терракота",
+    alt: "Арка барной стойки Oh Mumbai — цвет шафрана и бархатистая терракота",
+  },
+  {
+    src: Interior15,
+    alt: "Бар ресторана Oh Mumbai с тропической зеленью и мраморной столешницей",
+  },
+  {
+    src: Interior17,
+    alt: "Край барной стойки Oh Mumbai с открытыми полками",
+  },
+  {
+    src: Interior05,
+    alt: "Мурал с индийским пейзажем — роспись в стиле фрески в ресторане Oh Mumbai",
   },
   {
     src: Interior10,
-    alt: "Этнические элементы интерьера индийского ресторана Oh Mumbai",
+    alt: "Вход в зал ресторана Oh Mumbai — шторы и этнические элементы интерьера",
   },
-  { src: Interior11, alt: "Декор и освещение зала ресторана Oh Mumbai" },
+  {
+    src: Interior16,
+    alt: "Детали бара Oh Mumbai — стекло, латунь и мрамор",
+  },
+  {
+    src: Interior11,
+    alt: "Санузел ресторана Oh Mumbai с каменной раковиной и арочным зеркалом",
+  },
   {
     src: Interior12,
-    alt: "Приватная зона индийского ресторана Oh Mumbai в Санкт-Петербурге",
+    alt: "Роспись с павлином — декор и освещение в ресторане Oh Mumbai",
   },
 ];
+
+const LAYOUT = {
+  hero: 0,
+
+  gridTop: [1, 2, 3, 4],
+  bigTop: 5,
+
+  bigMid: 6,
+  pairMid: [7, 8],
+
+  rowMid: [9, 10, 11, 12],
+
+  mural: 13,
+
+  rowBottom: [14, 15, 16, 17],
+};
+
+const SIZES_FULL = "1440px";
+const SIZES_HALF = "708px";
+const SIZES_QUARTER = "342px";
+
+type PhotoTileProps = {
+  index: number;
+  sizes: string;
+  className?: string;
+  delay?: number;
+  onOpen: (index: number) => void;
+};
+
+const PhotoTile = ({
+  index,
+  sizes,
+  className,
+  delay = 0,
+  onOpen,
+}: PhotoTileProps) => (
+  <motion.button
+    type="button"
+    onClick={() => onOpen(index)}
+    className={cn(
+      "group relative w-full cursor-pointer overflow-hidden rounded-sm",
+      className,
+    )}
+    {...fadeUp(delay)}
+  >
+    <Image
+      src={photos[index].src}
+      alt={photos[index].alt}
+      fill
+      sizes={sizes}
+      className="object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  </motion.button>
+);
 
 export default function InteriorPage() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -98,10 +186,11 @@ export default function InteriorPage() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Image
-            src={Interior}
+            src={Art}
             alt="Интерьер индийского ресторана Oh Mumbai в Санкт-Петербурге"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-[center_75%]"
           />
         </motion.div>
@@ -110,23 +199,58 @@ export default function InteriorPage() {
         </H1Title>
       </div>
 
-      <Section className="text-chocolate gap-y-0">
-        <div className="col-span-6 py-30">
-          <H3Title className="pb-6" delay={0}>
-            Ресторан рассчитан на 37 посадочных мест
-          </H3Title>
-          <Paragraph className="pb-2" delay={0.1}>
-            Премиальное пространство, где распределение мест позволяет соблюдать{" "}
-            приватность гостей
-          </Paragraph>
-          <Paragraph delay={0.2}>
-            При этом в центре зала — коммунальный стол, который позволяет
-            объединять большие компании вечером или располагает к обеду среди
-            других гостей
-          </Paragraph>
+      <Section className="text-chocolate gap-y-0 py-30">
+        <H3Title
+          className="col-span-6 row-span-2 flex flex-col justify-end pb-12"
+          delay={0}
+        >
+          Ресторан рассчитан <br /> на 37 посадочных мест
+        </H3Title>
+
+        <Paragraph className="col-span-6 pb-2" delay={0.15}>
+          Премиальное пространство, где распределение мест позволяет соблюдать
+          приватность гостей
+        </Paragraph>
+        <Paragraph className="col-span-6 pb-12" delay={0.25}>
+          При этом в центре зала — коммунальный стол, который позволяет
+          объединять большие компании вечером или располагает к обеду среди
+          других гостей
+        </Paragraph>
+
+        <PhotoTile
+          index={LAYOUT.hero}
+          sizes={SIZES_FULL}
+          className="col-span-12 h-197"
+          onOpen={open}
+        />
+
+        <div className="col-span-6 mt-6 grid grid-cols-2 gap-6">
+          {LAYOUT.gridTop.map((index, n) => (
+            <PhotoTile
+              key={n}
+              index={index}
+              sizes={SIZES_QUARTER}
+              className="h-96"
+              delay={n * 0.1}
+              onOpen={open}
+            />
+          ))}
         </div>
-        <div className="col-span-6 py-30">
-          <Paragraph className="pb-2" delay={0.15}>
+        <PhotoTile
+          index={LAYOUT.bigTop}
+          sizes={SIZES_HALF}
+          className="col-span-6 mt-6"
+          onOpen={open}
+        />
+
+        <PhotoTile
+          index={LAYOUT.bigMid}
+          sizes={SIZES_HALF}
+          className="col-span-6 mt-6 h-197"
+          onOpen={open}
+        />
+        <div className="col-span-6 mt-6 flex flex-col">
+          <Paragraph className="pb-6" delay={0.15}>
             Основная идея дизайна — создать осмысленный современный комфорт и
             транслировать именно ту интерпретацию Индии, которой хочет
             поделиться с гостями сама хозяйка заведения Шалини
@@ -137,101 +261,62 @@ export default function InteriorPage() {
             комфорта. Глубокая бархатистая терракота и цвет шафрана задают
             природную цветовую тональность
           </Paragraph>
+
+          <div className="mt-auto grid grid-cols-2 gap-6">
+            {LAYOUT.pairMid.map((index, n) => (
+              <PhotoTile
+                key={n}
+                index={index}
+                sizes={SIZES_QUARTER}
+                className="h-96"
+                delay={n * 0.1}
+                onOpen={open}
+              />
+            ))}
+          </div>
         </div>
 
-        {[0, 1, 2, 3].map((i) => (
-          <motion.button
-            key={i}
-            type="button"
-            onClick={() => open(i)}
-            className="group col-span-3 h-96 w-full cursor-pointer overflow-hidden rounded-sm"
-            {...fadeUp(i * 0.1)}
-          >
-            <Image
-              src={photos[i].src}
-              alt={photos[i].alt}
-              width={322}
-              height={384}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.button>
+        {LAYOUT.rowMid.map((index, n) => (
+          <PhotoTile
+            key={n}
+            index={index}
+            sizes={SIZES_QUARTER}
+            className="col-span-3 mt-6 h-96"
+            delay={n * 0.1}
+            onOpen={open}
+          />
         ))}
 
-        <motion.button
-          type="button"
-          onClick={() => open(4)}
-          className="group col-span-12 mt-6 h-197 w-full cursor-pointer overflow-hidden rounded-sm"
-          {...fadeUp(0)}
-        >
-          <Image
-            src={photos[4].src}
-            alt={photos[4].alt}
-            width={1400}
-            height={788}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </motion.button>
-
-        <Paragraph className="col-span-6 col-start-7 py-30" delay={0.1}>
-          Спокойная фоновая база интерьера с элементами декоративных приемов{" "}
+        <Paragraph className="col-span-6 col-start-7 py-14" delay={0.1}>
+          Спокойная фоновая база интерьера с элементами декоративных приемов
           собирается у центральной росписи в стиле фрески. Это мурал индийского
           пейзажа. Как арт-объект роспись становится визуальным порталом,
           переносящим гостей из городской суеты в атмосферу зеленых холмов
           Кералы и дворцов Джайпура
         </Paragraph>
 
-        {[5, 6].map((i) => (
-          <motion.button
-            key={i}
-            type="button"
-            onClick={() => open(i)}
-            className="group col-span-6 h-96 w-full cursor-pointer overflow-hidden rounded-sm"
-            {...fadeUp((i - 5) * 0.15)}
-          >
-            <Image
-              src={photos[i].src}
-              alt={photos[i].alt}
-              width={688}
-              height={384}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.button>
-        ))}
+        <PhotoTile
+          index={LAYOUT.mural}
+          sizes={SIZES_FULL}
+          className="col-span-12 h-197"
+          onOpen={open}
+        />
 
-        <motion.button
-          type="button"
-          onClick={() => open(7)}
-          className="group col-span-12 my-6 h-197 w-full cursor-pointer overflow-hidden rounded-sm"
-          {...fadeUp(0)}
-        >
-          <Image
-            src={photos[7].src}
-            alt={photos[7].alt}
-            width={688}
-            height={384}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        {LAYOUT.rowBottom.map((index, n) => (
+          <PhotoTile
+            key={n}
+            index={index}
+            sizes={SIZES_QUARTER}
+            className="col-span-3 mt-6 h-96"
+            delay={n * 0.1}
+            onOpen={open}
           />
-        </motion.button>
-
-        {[8, 9, 10, 11].map((i) => (
-          <motion.button
-            key={i}
-            type="button"
-            onClick={() => open(i)}
-            className="group col-span-3 h-96 w-full cursor-pointer overflow-hidden rounded-sm"
-            {...fadeUp((i - 8) * 0.1)}
-          >
-            <Image
-              src={photos[i].src}
-              alt={photos[i].alt}
-              width={322}
-              height={384}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.button>
         ))}
 
-        <Paragraph className="col-span-6 col-start-7 py-30" delay={0.1}>
+        <Paragraph
+          className="col-span-6 col-start-4 pt-30 text-center"
+          delay={0.1}
+        >
           Такой формат подходит тем, кто ищет ресторан для свадьбы, банкета для
           близких или небольших корпоративов в Санкт-Петербурге – атмосфера
           Oh!Mumbai подходит для любого повода. Будем рады обсудить формат под

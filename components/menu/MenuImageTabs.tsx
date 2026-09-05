@@ -297,6 +297,8 @@ export default function MenuImageTabs() {
               alt={TABS[active].alt}
               width={1200}
               height={1800}
+              sizes="1440px"
+              priority={active === tabFromUrl && manualTab === null}
               className="h-auto w-full"
             />
           </motion.div>
